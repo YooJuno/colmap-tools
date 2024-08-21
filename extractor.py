@@ -30,7 +30,6 @@ while True:
     
     if frame_number%(video_fps/input_fps) == 0:
         frame_filename = os.path.join(output_folder, f'frame_{frame_number}.png')
-        # cv2.imwrite(frame_filename, frame[85:926, : ])
         cv2.imwrite(frame_filename, frame)
     
     frame_number += 1
