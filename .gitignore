@@ -1,6 +1,2 @@
-*.mp4
-*.avi
-*.jpeg
-*.jpg
-*.png
-*.MOV
+video/
+workspace/
