@@ -65,7 +65,7 @@ if __name__ == '__main__':
     for i in range(len(frame_number)-1):
         duration = ((frame_number[i+1] - frame_number[i])/video_fps) / (60 * 60) # hours
         estimated_velocity = (calc_dist(camera_pos[i+1], camera_pos[i]) * ratio_meter_to_pixel / 1000) / duration
-        print("(%3d -> %3d) Estimated: %5.2f[km/h]"%(frame_number[i], frame_number[i+1], estimated_velocity), end='')
+        print("(%3d -> %3d) Estimation: %5.2f[km/h]"%(frame_number[i], frame_number[i+1], estimated_velocity), end='')
         print(",  GPS: %d[km/h]"%(gps_velocity[i]))
         
         
