@@ -57,14 +57,14 @@ def extract_frames_from(video_path, video_name, output_fps):
         
 if __name__ == '__main__':
     input_video_path = './video/'
-    input_video_name = 'R1.mp4'
-    output_fps = 1
+    input_video_name = 'F1.mp4'
+    output_fps = 10
     
     reference_frame = extract_frames_from(input_video_path, input_video_name, output_fps)
     
     mask_frame = make_masking_image_of(reference_frame)
     
-    output_folder_path = f'workspace/{input_video_name.split('.')[0]}_{str(output_fps)}fps/mask'
+    output_folder_path = f'workspace/{input_video_name.split(".")[0]}_{str(output_fps)}fps/mask'
     os.makedirs(output_folder_path, exist_ok=True)
-    mask_filename = os.path.join(output_folder_path, f'{input_video_name.split('.')[0]}_mask.png')
+    mask_filename = os.path.join(output_folder_path, f'{input_video_name.split(".")[0]}_mask.png')
     cv2.imwrite(mask_filename, mask_frame)
