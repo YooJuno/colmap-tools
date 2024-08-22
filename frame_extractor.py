@@ -64,7 +64,8 @@ if __name__ == '__main__':
     
     mask_frame = make_masking_image_of(reference_frame)
     
-    output_folder_path = 'workspace/' + input_video_name.split('.')[0] + '_' + str(output_fps) + 'fps/mask'
+    # output_folder_path = 'workspace/' + input_video_name.split('.')[0] + '_' + str(output_fps) + 'fps/mask'
+    output_folder_path = f'workspace/{input_video_name.split('.')[0]}_{str(output_fps)}fps/mask'
     os.makedirs(output_folder_path, exist_ok=True)
     mask_filename = os.path.join(output_folder_path, f'{input_video_name.split('.')[0]}_mask.png')
     cv2.imwrite(mask_filename, mask_frame)
