@@ -9,6 +9,7 @@ def make_masking_image_of(origin):
     
     sketchbook_checkpoint = cv2.resize(origin, (origin.shape[1]//2, origin.shape[0]//2))
     sketchbook = sketchbook_checkpoint.copy()
+    font = cv2.FONT_HERSHEY_SIMPLEX
     
     def mouse_callback(event, x, y, flags, param):
         nonlocal cnt, sketchbook
@@ -16,13 +17,14 @@ def make_masking_image_of(origin):
         sketchbook_height, sketchbook_width = sketchbook.shape[:2]
         
         text = f'[{x}, {y}]'
-        text_width, text_height= cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 0.8, 2)[0]
+        font_scale = 0.7
+        text_width, text_height= cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, font_scale, 2)[0]
         
         offset_y = 30
-        text_tl_x = max(0, min(x - text_width//2, sketchbook_width - text_width))
-        text_tl_y = min(sketchbook_height - text_height, y+offset_y)
+        text_tl_x = max(min(x - text_width//2, sketchbook_width - text_width), 0)
+        text_tl_y = min(y+offset_y, sketchbook_height - text_height)
         
-        cv2.putText(sketchbook, f"[{x}, {y}]", (text_tl_x, text_tl_y), cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.8, color=(255, 255, 255), thickness=2)
+        cv2.putText(sketchbook, text, (text_tl_x, text_tl_y), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (255, 255, 255), 2)
         
         if cnt > 0:
             cv2.line(sketchbook, roi[cnt-1], (x, y), (0, 255, 0), thickness=2)
@@ -30,6 +32,7 @@ def make_masking_image_of(origin):
         if event == cv2.EVENT_LBUTTONDOWN:
             roi.append((x,y))
             cv2.circle(sketchbook_checkpoint, (x,y), 3, (0, 255, 0), thickness=3)
+            cv2.putText(sketchbook_checkpoint, f"[{x}, {y}]", (text_tl_x, text_tl_y), cv2.FONT_HERSHEY_SIMPLEX, font_scale, color=(240, 255, 240), thickness=2)
             if cnt > 0:
                 cv2.line(sketchbook_checkpoint, roi[cnt-1], (x, y), (0, 255, 0), thickness=2)
             cnt += 1
@@ -40,7 +43,7 @@ def make_masking_image_of(origin):
     while cnt < 4:
         cv2.imshow('Set RoI Mask', sketchbook)
         if cv2.waitKey(1) == 27:
-            break
+            exit(1)
         
     cv2.destroyAllWindows()
     
