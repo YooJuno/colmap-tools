@@ -56,10 +56,10 @@ def make_masking_image_of(origin):
 def Run(video_path, video_name, output_fps):
     frame_number = 0
     
-    output_folder_path = f'workspaces/{input_video_name.split(".")[0]}_{str(output_fps)}fps/dataset'
+    output_folder_path = f'workspaces/{video_name.split(".")[0]}_{str(output_fps)}fps/dataset'
     os.makedirs(output_folder_path, exist_ok=True)
 
-    mask_folder_path = f'workspaces/{input_video_name.split(".")[0]}_{str(output_fps)}fps/mask'
+    mask_folder_path = f'workspaces/{video_name.split(".")[0]}_{str(output_fps)}fps/mask'
     os.makedirs(mask_folder_path, exist_ok=True)
     
     cap = cv2.VideoCapture(video_path + video_name)
@@ -82,8 +82,9 @@ def Run(video_path, video_name, output_fps):
         frame_number += 1
     cap.release()
     
-    print(f'Extracted {frame_number} frames to "{output_folder_path}"')      
-        
+    print(f'Extracted {frame_number} frames to "{output_folder_path}"')
+
+
 if __name__ == '__main__':
     input_video_path = './video/'
     input_video_name = 'Sample_3.mp4'

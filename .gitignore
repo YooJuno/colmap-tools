@@ -1,4 +1,6 @@
 dataset/
 mask/
 *.db
+*.db-shm
+*.db-wal
 *.lnk
