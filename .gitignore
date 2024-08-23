@@ -1,2 +1,4 @@
-workspaces/
+dataset/
+mask/
+*.db
 *.lnk
