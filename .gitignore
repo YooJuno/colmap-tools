@@ -1,4 +1,5 @@
 dataset/
+image/
 mask/
 *.db
 *.db-shm

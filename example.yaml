@@ -1,0 +1,19 @@
+video_name: "R1.mp4"
+
+fps : 
+
+real_distance_meter : 
+
+# tx, ty, tz
+virtual_reference_positions_pixel: 
+  - []
+  - []
+
+# tx, ty, tz
+camera_positions_pixel:
+  - []
+  - []
+  
+frame_indexes: [, ]
+
+real_speed: [, ]
