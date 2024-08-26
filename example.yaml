@@ -1,8 +1,8 @@
-video_name: "R1.mp4"
+video_name: ""
 
 fps : 
 
-real_distance_meter : 
+real_reference_distance_meter : 
 
 # tx, ty, tz
 virtual_reference_positions_pixel: 

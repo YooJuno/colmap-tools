@@ -2,7 +2,7 @@ video_name: "F1.mp4"
 
 fps : 29.27
 
-real_distance_meter : 60.6
+real_reference_distance_meter : 60.6
 
 # tx, ty, tz
 virtual_reference_positions_pixel:
