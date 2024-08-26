@@ -88,6 +88,6 @@ def Run(video_path, video_name, output_fps):
 if __name__ == '__main__':
     input_video_path = './video/'
     input_video_name = 'Sample_3.mp4'
-    output_fps = 10
+    output_fps = 15
     
     Run(input_video_path, input_video_name, output_fps)
