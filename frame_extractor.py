@@ -53,12 +53,13 @@ def make_masking_image_of(origin):
 
 def Run(video_path, video_name, output_fps):
     frame_number = 0
+    workspace_path = f'workspaces/{video_name.split(".")[0]}_{str(output_fps)}fps/'
     
-    output_folder_path = f'workspaces/{video_name.split(".")[0]}_{str(output_fps)}fps/dataset'
-    os.makedirs(output_folder_path, exist_ok=True)
+    output_image_path = workspace_path + 'image'
+    os.makedirs(output_image_path, exist_ok=True)
 
-    mask_folder_path = f'workspaces/{video_name.split(".")[0]}_{str(output_fps)}fps/mask'
-    os.makedirs(mask_folder_path, exist_ok=True)
+    mask_path = workspace_path + 'mask'
+    os.makedirs(mask_path, exist_ok=True)
     
     cap = cv2.VideoCapture(video_path + video_name)
     while True:
@@ -71,21 +72,21 @@ def Run(video_path, video_name, output_fps):
             mask_frame = make_masking_image_of(frame)
             
         if frame_number%(round(cap.get(cv2.CAP_PROP_FPS))/output_fps) == 0:
-            frame_filename = os.path.join(output_folder_path, f'frame_{frame_number}.png')
+            frame_filename = os.path.join(output_image_path, f'frame_{frame_number}.png')
             cv2.imwrite(frame_filename, frame)
         
-            mask_filename = os.path.join(mask_folder_path, f'frame_{frame_number}.png.png')
+            mask_filename = os.path.join(mask_path, f'frame_{frame_number}.png.png')
             cv2.imwrite(mask_filename, mask_frame)
         
         frame_number += 1
     cap.release()
     
-    print(f'Extracted {frame_number} frames to "{output_folder_path}"')
+    print(f'Extracted {frame_number} frames to "{output_image_path}"')
 
 
 if __name__ == '__main__':
     input_video_path = './video/'
-    input_video_name = 'Sample_2.mp4'
-    output_fps = 15
+    input_video_name = 'Sample_1.mp4'
+    output_fps = 10
     
     Run(input_video_path, input_video_name, output_fps)
