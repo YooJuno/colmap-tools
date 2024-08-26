@@ -40,10 +40,8 @@ def make_masking_image_of(origin):
     cv2.namedWindow('Set RoI Mask')
     cv2.setMouseCallback('Set RoI Mask', mouse_callback)
 
-    while cnt < 4:
+    while cv2.waitKey(1) != 27:
         cv2.imshow('Set RoI Mask', sketchbook)
-        if cv2.waitKey(1) == 27:
-            exit(1)
         
     cv2.destroyAllWindows()
     
@@ -87,7 +85,7 @@ def Run(video_path, video_name, output_fps):
 
 if __name__ == '__main__':
     input_video_path = './video/'
-    input_video_name = 'Sample_3.mp4'
+    input_video_name = 'Sample_2.mp4'
     output_fps = 15
     
     Run(input_video_path, input_video_name, output_fps)
