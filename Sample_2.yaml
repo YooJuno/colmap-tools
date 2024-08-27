@@ -1,0 +1,18 @@
+video_path: "./video/Sample_2.mp4"
+
+binary_path : "./workspaces/Sample_2_15fps/sparse/0/images.bin"
+
+fps : 29.97
+
+real_reference_distance_meter : 75.5
+
+# tx, ty, tz
+virtual_reference_positions_pixel: 
+  - [-0.020468, 0.214346, 2.42287] # src
+  - [0.0672735, 0.307078, 2.83417]
+  - [0.16655, 0.408771, 3.19638]
+  - [0.237658, 0.466339, 3.6642]
+  # - [0.313353, 0.557173, 4.00319]
+  # - [0.381322, 0.643134, 4.30884]
+  # - [0.440092, 0.720637, 4.59152]
+  # - [0.496193, 0.798542, 4.86136] # dst

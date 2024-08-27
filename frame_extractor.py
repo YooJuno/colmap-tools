@@ -17,7 +17,7 @@ def make_masking_image_of(origin):
         sketchbook_height, sketchbook_width = sketchbook.shape[:2]
         
         text = f'[{x}, {y}]'
-        font_scale = 0.7
+        font_scale = 0.5
         text_width, text_height= cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, font_scale, 2)[0]
         
         offset_y = 30
@@ -51,9 +51,9 @@ def make_masking_image_of(origin):
     return mask
 
 
-def Run(video_path, video_name, output_fps):
+def Run(video_path, output_fps):
     frame_number = 0
-    workspace_path = f'workspaces/{video_name.split(".")[0]}_{str(output_fps)}fps/'
+    workspace_path = f'workspaces/{video_path.split("/")[-1].split(".")[0]}_{str(output_fps)}fps/'
     
     output_image_path = workspace_path + 'image'
     os.makedirs(output_image_path, exist_ok=True)
@@ -61,7 +61,7 @@ def Run(video_path, video_name, output_fps):
     mask_path = workspace_path + 'mask'
     os.makedirs(mask_path, exist_ok=True)
     
-    cap = cv2.VideoCapture(video_path + video_name)
+    cap = cv2.VideoCapture(video_path)
     while True:
         ret, frame = cap.read()
         
@@ -81,12 +81,11 @@ def Run(video_path, video_name, output_fps):
         frame_number += 1
     cap.release()
     
-    print(f'Extracted {frame_number} frames to "{output_image_path}"')
+    print('Extraction Complete!')
 
 
 if __name__ == '__main__':
-    input_video_path = './video/'
-    input_video_name = 'Sample_1.mp4'
-    output_fps = 10
+    input_video_path = './video/Sample_3.mp4'
+    output_fps = 15
     
-    Run(input_video_path, input_video_name, output_fps)
+    Run(input_video_path, output_fps)
