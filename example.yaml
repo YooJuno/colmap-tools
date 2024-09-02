@@ -1,21 +1,11 @@
 video_name: ""
 
-fps : 
+binary_path : ""
 
 real_reference_distance_meter : 
 
 # tx, ty, tz
 virtual_reference_positions_pixel: 
   - [] # src
+  - []
   - [] # dst
-
-# tx, ty, tz
-camera_positions_pixel:
-  - []
-  - []
-  - []
-  - []
-  
-frame_indexes: [ , ]
-
-real_speed: [ , ]

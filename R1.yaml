@@ -2,8 +2,6 @@ video_path: "./video/R1.mp4"
 
 binary_path : "./workspaces/R1_10fps/sparse/0/images.bin"
 
-fps : 29.27
-
 real_reference_distance_meter : 80.3
 
 # tx, ty, tz
